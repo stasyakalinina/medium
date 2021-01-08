@@ -5,7 +5,7 @@ import GlobalFeed from './globalFeed';
 import Article from './article';
 import Authentication from "./authentication";
 
-export default () => {
+ const Routes = () => {
     return (
         <Switch>
             <Route path="/" component={GlobalFeed} exact />
@@ -14,4 +14,6 @@ export default () => {
             <Route path="/articles/:slug" component={Article} />
         </Switch>
     )
-}
+};
+
+export default Routes;

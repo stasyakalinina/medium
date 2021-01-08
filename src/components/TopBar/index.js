@@ -6,12 +6,12 @@ const TopBar = () => {
     return (
         <header className="header">
             <nav className="header__nav nav">
-                <Link to="/" className="nav__logo" >
+                <Link to="/" className="nav__logo">
                    Medium
                 </Link>
                 <ul className="nav__list">
                     <li className="nav__item">
-                        <NavLink to="/" className="nav__link">
+                        <NavLink to="/" className="nav__link" exact>
                             Home
                         </NavLink>
                     </li>
