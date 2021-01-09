@@ -5,7 +5,7 @@ const useFetch = (url) => {
    const baseUrl = 'https://conduit.productionready.io/api'
    const [response, setResponse] = useState(null)
    const [isLoading, setIsLoading] = useState(false)
-   const [isError, setIsError] = useState(null)
+   const [error, setError] = useState(null)
    const [options, setOptions] = useState({})
    
    const doFetch = (options) => {
@@ -25,13 +25,13 @@ const useFetch = (url) => {
          setIsLoading(false)
          
       }).catch(err => {
-         console.log('error', err)
-         setIsError(err.response.data)
+         console.log('error', err.response.data)
+         setError(err.response.data)
          setIsLoading(false)
       })
    }, [isLoading, options, url]);
    
-   return [{response, isLoading, isError}, doFetch]
+   return [{response, isLoading, error}, doFetch]
 }
 
 export default useFetch;

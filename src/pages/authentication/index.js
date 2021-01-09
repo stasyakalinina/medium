@@ -4,6 +4,7 @@ import {Link, Redirect} from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import {CurrentUserContext} from "../../context/currentUser";
+import ErrorMessages from "../../components/ErrorMessages";
 
 const Authentication = (props) => {
     const isLogin = props.match.path === '/login';
@@ -12,11 +13,9 @@ const Authentication = (props) => {
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [isSuccessSubmit, setIsSuccessSubmit] = useState(false);
-    const [{response, isLoading}, doFetch] = useFetch(apiUrl);
-    const [setStoredValue] = useLocalStorage('token');
-    const [currentUserState, setCurrentUserState] = useContext(CurrentUserContext);
-    
-    console.log("currentUserState" , currentUserState)
+    const [{response, isLoading, error}, doFetch] = useFetch(apiUrl);
+    const [, setStoredValue] = useLocalStorage('token');
+    const [, setCurrentUserState] = useContext(CurrentUserContext);
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,7 +55,8 @@ const Authentication = (props) => {
             </Link>
             <form className="auth__form"
                   onSubmit={handleSubmit}>
-               {!isLogin && (
+                {error && <ErrorMessages msg={error.errors}/>}
+                {!isLogin && (
                 <fieldset>
                     <input type="text"
                            className="auth__input"
