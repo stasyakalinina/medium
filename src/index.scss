@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0 10%;
-  font-family: 'Lato', 'Helvetica Neue', sans-serif;
+  font-family: source sans pro, sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #4a4a4a;
@@ -18,8 +18,10 @@ body {
   align-items: center;
 
   &__logo {
-    font-size: 36px;
-    font-weight: 300;
+    margin-right: 2rem;
+    font-family: titillium web,sans-serif;;
+    font-size: 1.5rem;
+    font-weight: 700;
     line-height: 1;
     color: #5cb85c;
     text-decoration: none;
@@ -33,6 +35,8 @@ body {
   }
 
   &__link {
+    display: inline-flex;
+    align-items: center;
     padding: 0 10px;
     color: rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -42,6 +46,10 @@ body {
     &.active {
       color: rgba(0, 0, 0, 0.6);
     }
+  }
+
+  &__icon {
+    font-style: normal;
   }
 }
 
@@ -118,4 +126,13 @@ body {
   list-style: none;
   color: darkred;
   text-align: left;
+}
+
+.user-pic {
+  display: inline-flex;
+  height: 26px;
+  width: 26px;
+  margin-right: 5px;
+  object-fit: cover;
+  border-radius: 50%;
 }
