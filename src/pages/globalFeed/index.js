@@ -1,7 +1,8 @@
-import React, {useEffect} from 'react';
+import React, {Fragment, useEffect} from 'react'
 
 import useFetch from "../../hooks/useFetch";
 import Feed from "../../components/Feed";
+import Pagination from '../../components/Pagination'
 
 const GlobalFeed = () => {
     const apiUrl = '/articles?limit=10&offset=0';
@@ -21,7 +22,10 @@ const GlobalFeed = () => {
                 {isLoading && <p>Loading...</p>}
                 {error && <p>Something went wrong...</p>}
                 {!isLoading && response && (
-                    <Feed articles={response.articles}/>
+                    <Fragment>
+                        <Feed articles={response.articles}/>
+                        <Pagination total={500} limit={10} currentPage={2} url='/'/>
+                    </Fragment>
                 )}
             </section>
             <aside className="home-page__sidebar">
