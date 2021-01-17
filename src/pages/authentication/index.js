@@ -19,6 +19,7 @@ const Authentication = (props) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
+        debugger;
         const user = isLogin ? {email, password} : {email, password, username}
         doFetch({
             method: 'post',

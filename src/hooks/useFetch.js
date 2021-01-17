@@ -10,13 +10,15 @@ const useFetch = (url) => {
    const [error, setError] = useState(null)
    const [options, setOptions] = useState({})
    const [token] = useLocalStorage('token')
-   
+   //
    const doFetch = useCallback((options) => {
+      debugger
       setOptions(options);
       setIsLoading(true);
    }, [])
    
    useEffect(() => {
+      
       const requestOptions = {
          ...options,
          ...{
@@ -25,7 +27,7 @@ const useFetch = (url) => {
             }
          }
       }
-      
+      debugger
       if (!isLoading) {
          return
       }
