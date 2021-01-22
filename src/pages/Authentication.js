@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 
-import useFetch from '../../hooks/useFetch'
-import useLocalStorage from '../../hooks/useLocalStorage'
-import {CurrentUserContext} from '../../context/currentUser'
-import ErrorMessages from '../../components/ErrorMessages'
+import useFetch from '../hooks/useFetch'
+import useLocalStorage from '../hooks/useLocalStorage'
+import {CurrentUserContext} from '../context/currentUser'
+import ErrorMessage from '../components/ErrorMessage'
 
 const Authentication = (props) => {
   const isLogin = props.match.path === '/login'
@@ -19,7 +19,6 @@ const Authentication = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    debugger
     const user = isLogin ? {email, password} : {email, password, username}
     doFetch({
       method: 'post',
@@ -55,7 +54,7 @@ const Authentication = (props) => {
         {isLogin ? 'Need an account?' : 'Have an account?'}
       </Link>
       <form className="auth__form" onSubmit={handleSubmit}>
-        {error && <ErrorMessages msg={error.errors} />}
+        {error && <ErrorMessage msg={error.errors} isForm={true}/>}
         {!isLogin && (
           <fieldset>
             <input

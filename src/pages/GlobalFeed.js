@@ -1,9 +1,12 @@
 import React, {Fragment, useEffect} from 'react'
 
-import useFetch from '../../hooks/useFetch'
-import Feed from '../../components/Feed'
-import Pagination from '../../components/Pagination'
-import {getPaginator, limit} from '../../utils'
+import useFetch from '../hooks/useFetch'
+import Feed from '../components/Feed'
+import Pagination from '../components/Pagination'
+import PopularTags from '../components/PopularTags'
+import Loading from '../components/Loading'
+import ErrorMessage from '../components/ErrorMessage'
+import {getPaginator, limit} from '../utils'
 
 const GlobalFeed = ({location, match}) => {
   const {currentPage, offset} = getPaginator(location.search)
@@ -22,8 +25,8 @@ const GlobalFeed = ({location, match}) => {
         <p>A place to share knowledge</p>
       </section>
       <section className="home-page__content">
-        {isLoading && <p>Loading...</p>}
-        {error && <p>Something went wrong...</p>}
+        {isLoading && <Loading />}
+        {error && <ErrorMessage isForm={false} msg={error}/>}
         {!isLoading && response && (
           <Fragment>
             <Feed articles={response.articles} />
@@ -32,7 +35,7 @@ const GlobalFeed = ({location, match}) => {
         )}
       </section>
       <aside className="home-page__sidebar">
-        <h2>Popular tags</h2>
+        <PopularTags />
       </aside>
     </main>
   )

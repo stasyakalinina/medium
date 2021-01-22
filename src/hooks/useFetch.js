@@ -31,7 +31,7 @@ const useFetch = (url) => {
 
     axios(baseUrl + url, requestOptions)
       .then((res) => {
-        console.log('result success', res)
+        //console.log('result success', res)
         setResponse(res.data)
         setIsLoading(false)
       })
