@@ -6,7 +6,9 @@ import Pagination from '../components/Pagination'
 import PopularTags from '../components/PopularTags'
 import Loading from '../components/Loading'
 import ErrorMessage from '../components/ErrorMessage'
+import FeedToggler from '../components/FeedToggler'
 import {getPaginator, limit} from '../utils'
+import '../index.scss'
 
 const GlobalFeed = ({location, match}) => {
   const {currentPage, offset} = getPaginator(location.search)
@@ -25,6 +27,7 @@ const GlobalFeed = ({location, match}) => {
         <p>A place to share knowledge</p>
       </section>
       <section className="home-page__content">
+        <FeedToggler tagName="dragon"/>
         {isLoading && <Loading />}
         {error && <ErrorMessage isForm={false} msg={error}/>}
         {!isLoading && response && (
