@@ -28,7 +28,7 @@ const GlobalFeed = ({location, match}) => {
       </section>
       <div className="container">
         <section className="home-page__content">
-          <FeedToggler tagName="dragon"/>
+          <FeedToggler />
           {isLoading && <Loading />}
           {error && <ErrorMessage isForm={false} msg={error}/>}
           {!isLoading && response && (
