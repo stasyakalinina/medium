@@ -4,15 +4,17 @@ import {Switch, Route} from 'react-router-dom';
 import GlobalFeed from './GlobalFeed';
 import Article from './Article';
 import Authentication from "./Authentication";
+import TagFeed from './TagFeed'
 
  const Routes = () => {
-    return (
-        <Switch>
-            <Route path="/" component={GlobalFeed} exact />
-            <Route path="/login" component={Authentication} />
-            <Route path="/register" component={Authentication} />
-            <Route path="/articles/:slug" component={Article} />
-        </Switch>
+   return (
+     <Switch>
+       <Route path="/" component={GlobalFeed} exact />
+       <Route path="/tags/:slug" component={TagFeed} />
+       <Route path="/login" component={Authentication} />
+       <Route path="/register" component={Authentication} />
+       <Route path="/articles/:slug" component={Article} />
+     </Switch>
     )
 };
 

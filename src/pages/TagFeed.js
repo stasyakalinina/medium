@@ -1,5 +1,6 @@
 import React, {Fragment, useEffect} from 'react'
 
+
 import useFetch from '../hooks/useFetch'
 import Feed from '../components/Feed'
 import Pagination from '../components/Pagination'
@@ -10,15 +11,16 @@ import FeedToggler from '../components/FeedToggler'
 import {getPaginator, limit} from '../utils'
 import '../index.scss'
 
-const GlobalFeed = ({location, match}) => {
+const TagFeed = ({location, match}) => {
+  const tagName = match.params.slug
   const {currentPage, offset} = getPaginator(location.search)
-  const apiUrl = `/articles?limit=${limit}&offset=${offset}`
+  const apiUrl = `/articles?tag=${tagName}&limit=${limit}&offset=${offset}`
   const [{response, isLoading, error}, doFetch] = useFetch(apiUrl)
   const url = match.url
 
   useEffect(() => {
     doFetch()
-  }, [doFetch, currentPage])
+  }, [doFetch, currentPage, tagName])
 
   return (
     <main className="home-page">
@@ -28,7 +30,7 @@ const GlobalFeed = ({location, match}) => {
       </section>
       <div className="container">
         <section className="home-page__content">
-          <FeedToggler tagName="dragon"/>
+          <FeedToggler tagName={tagName}/>
           {isLoading && <Loading />}
           {error && <ErrorMessage isForm={false} msg={error}/>}
           {!isLoading && response && (
@@ -46,4 +48,4 @@ const GlobalFeed = ({location, match}) => {
   )
 }
 
-export default GlobalFeed
+export default TagFeed
