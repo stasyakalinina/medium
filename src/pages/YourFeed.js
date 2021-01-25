@@ -10,16 +10,15 @@ import FeedToggler from '../components/FeedToggler'
 import {getPaginator, limit} from '../utils'
 import '../index.scss'
 
-const TagFeed = ({location, match}) => {
-  const tagName = match.params.slug
+const YourFeed = ({location, match}) => {
   const {currentPage, offset} = getPaginator(location.search)
-  const apiUrl = `/articles?tag=${tagName}&limit=${limit}&offset=${offset}`
+  const apiUrl = `/articles/feed?limit=${limit}&offset=${offset}`
   const [{response, isLoading, error}, doFetch] = useFetch(apiUrl)
   const url = match.url
 
   useEffect(() => {
     doFetch()
-  }, [doFetch, currentPage, tagName])
+  }, [doFetch, currentPage])
 
   return (
     <main className="home-page">
@@ -29,7 +28,7 @@ const TagFeed = ({location, match}) => {
       </section>
       <div className="container">
         <section className="home-page__content">
-          <FeedToggler tagName={tagName}/>
+          <FeedToggler />
           {isLoading && <Loading />}
           {error && <ErrorMessage isForm={false} msg={error}/>}
           {!isLoading && response && (
@@ -47,4 +46,5 @@ const TagFeed = ({location, match}) => {
   )
 }
 
-export default TagFeed
+export default YourFeed
+
