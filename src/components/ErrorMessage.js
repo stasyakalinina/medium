@@ -2,7 +2,7 @@ import React from 'react';
 import '../index.scss';
 
 const ErrorMessage = ({msg, isForm}) => {
-    let errorMessages = msg
+    let errorMessages = msg || ['Произошла ошибка']
     console.log({msg})
     if (isForm) {
         errorMessages = Object.keys(msg).map((name) => {
