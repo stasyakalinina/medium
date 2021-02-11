@@ -1,6 +1,5 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import useFetch from '../hooks/useFetch'
-import {Link} from "react-router-dom";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 import ArticleMeta from "../components/ArticleMeta";
