@@ -4,7 +4,7 @@ import PostForm from "../components/PostForm";
 const CreateArticle = () => {
   
   return (
-    <div>
+    <div className="container">
       <h1>Create Post</h1>
       <PostForm />
     </div>
