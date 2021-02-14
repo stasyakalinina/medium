@@ -9,8 +9,8 @@ const EditArticle = ({match}) => {
   const apiUrl = `/articles/${slug}`
   const [{response: fetchArticleResponse}, doFetchArticle] = useFetch(apiUrl)
   const [{response: updateArticleResponse, error: updateArticleError}, doUpdate] = useFetch(apiUrl)
-  const [initialValues, setInitialValues] = useState(null);
-  const [currentUserState] = useContext(CurrentUserContext);
+  const [initialValues, setInitialValues] = useState(null)
+  const [currentUserState] = useContext(CurrentUserContext)
   const [successSubmit, setSuccessSubmit] = useState(false)
   
   useEffect(() => {
@@ -21,7 +21,6 @@ const EditArticle = ({match}) => {
     if (!fetchArticleResponse) {
         return
     }
-    
     setInitialValues({
       title: fetchArticleResponse.article.title,
       description: fetchArticleResponse.article.description,
@@ -31,7 +30,6 @@ const EditArticle = ({match}) => {
   }, [fetchArticleResponse])
   
   const handleForm = (article) => {
-    console.log('handle update', article)
     doUpdate({
       method: 'put',
       data: {article}
@@ -55,7 +53,7 @@ const EditArticle = ({match}) => {
   
   return (
     <div className="container">
-      <h1>Create Post</h1>
+      <h1>Edit Post</h1>
       <PostForm errors={(updateArticleError && updateArticleError.errors) || []}
                 initialValues={initialValues}
                 handleForm={handleForm}
