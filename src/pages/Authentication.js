@@ -42,47 +42,47 @@ const Authentication = (props) => {
   }
 
   return (
-    <div className="auth">
+    <section className="auth container">
       <h1 className="auth__title">{isLogin ? 'Sign In' : 'Sign Up'}</h1>
       <Link to={isLogin ? '/login' : '/register'} className="auth__link">
         {isLogin ? 'Need an account?' : 'Have an account?'}
       </Link>
-      <form className="auth__form" onSubmit={handleSubmit}>
+      <form className="auth__form form" onSubmit={handleSubmit}>
         {error && <ErrorMessage msg={error.errors} isForm={true}/>}
         {!isLogin && (
-          <fieldset>
+          <fieldset className="form__field">
             <input
               type="text"
-              className="auth__input"
+              className="form__input"
               placeholder="Name"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </fieldset>
         )}
-        <fieldset>
+        <fieldset className="form__field">
           <input
             type="email"
-            className="auth__input"
+            className="form__input"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </fieldset>
-        <fieldset>
+        <fieldset className="form__field">
           <input
             type="password"
-            className="auth__input"
+            className="form__input"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </fieldset>
-        <button className="auth__btn" type="submit" disabled={isLoading}>
+        <button className="form__btn" type="submit" disabled={isLoading}>
           {isLogin ? 'Sign In' : 'Sign Up'}
         </button>
       </form>
-    </div>
+    </section>
   )
 }
 

@@ -33,35 +33,35 @@ const PostForm = ({handleForm, errors, initialValues}) => {
       <div className="editor-page__wrapper">
         {errors.length > 0 && <ErrorMessage msg={errors} />}
         <form className="editor-page__form form" onSubmit={handleSubmit}>
-          <fieldset>
+          <fieldset className="form__field">
             <input type="text"
                    className="form__input"
                    placeholder="Article title"
                    value={title}
                    onChange={(e) => setTitle(e.target.value)}/>
           </fieldset>
-          <fieldset>
+          <fieldset className="form__field">
             <input type="text"
                    className="form__input"
                    placeholder="What is this article about?"
                    value={description}
                    onChange={(e) => setDescription(e.target.value)}/>
           </fieldset>
-          <fieldset>
+          <fieldset className="form__field">
             <textarea className="form__input"
                       placeholder="Write your article"
                       rows="8"
                       value={body}
                       onChange={(e) => setBody(e.target.value)}></textarea>
           </fieldset>
-          <fieldset>
+          <fieldset className="form__field">
             <input type="text"
                    className="form__input"
                    placeholder="Enter tags"
                    value={tagList}
                    onChange={(e) => setTagList(e.target.value)}/>
           </fieldset>
-          <fieldset>
+          <fieldset className="form__field form__field--submit">
             <button type="submit"
                     className="form__btn">
               Publish Article
