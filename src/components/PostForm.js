@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import ErrorMessage from "./ErrorMessage";
 
 const PostForm = ({handleForm, errors, initialValues}) => {
   const [title, setTitle] = useState('');
@@ -8,13 +9,29 @@ const PostForm = ({handleForm, errors, initialValues}) => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleForm({foo: "bar"})
+    const article = {
+      title,
+      body,
+      description,
+      tagList: tagList.split(' ')
+    }
+    handleForm(article);
   }
+  
+  useEffect(() => {
+     if (!initialValues) {
+       return;
+     }
+     setTitle(initialValues.title)
+     setBody(initialValues.body)
+     setDescription(initialValues.description)
+     setTagList(initialValues.tagList.join(' '))
+  }, [initialValues])
   
   return (
     <section className="editor-page">
       <div className="editor-page__wrapper">
-        errors
+        {errors.length > 0 && <ErrorMessage msg={errors} />}
         <form className="editor-page__form form" onSubmit={handleSubmit}>
           <fieldset>
             <input type="text"
@@ -35,7 +52,7 @@ const PostForm = ({handleForm, errors, initialValues}) => {
                       placeholder="Write your article"
                       rows="8"
                       value={body}
-                      onChange={(e) => setBody(e.target.value)}> </textarea>
+                      onChange={(e) => setBody(e.target.value)}></textarea>
           </fieldset>
           <fieldset>
             <input type="text"
