@@ -290,6 +290,48 @@ body {
   }
 }
 
+.article-tools {
+   &__edit,
+   &__delete {
+     padding: 8px;
+     font: inherit;
+     font-size: 0.85rem;
+     font-weight: 400;
+     line-height: 1.25;
+     background-color: transparent;
+     border: 1px solid;
+     border-radius: 0.3rem;
+     cursor: pointer;
+   }
+
+  &__edit {
+    margin-right: 8px;
+    color: #bbb;
+    text-decoration: none;
+    border-color: #bbb;
+
+    &:hover,
+    &:focus {
+      color: #333333;
+      background-color: #818a91;
+      border-color: #333333;
+    }
+  }
+
+  &__delete {
+    color: #b85c5c;
+    border-color: #b85c5c;
+    outline: none;
+
+    &:hover,
+    &:focus {
+      color: #333333;
+      background-color: #b85c5c;
+      border-color: #333333;
+    }
+  }
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;
